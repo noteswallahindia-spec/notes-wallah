@@ -7,11 +7,6 @@
 <title>Notes Wallah</title>
 
 <style>
-
-/* =========================
-   BASIC
-========================= */
-
 *{
   box-sizing:border-box;
 }
@@ -24,1402 +19,909 @@ html,body{
   color:#15171c;
 }
 
+body{
+  min-height:100vh;
+}
+
 button{
-  font:inherit;
+  font-family:inherit;
   border:0;
   cursor:pointer;
 }
 
-
-/* =========================
-   SPLASH SCREEN
-========================= */
+/* ================= SPLASH ================= */
 
 #splash{
   position:fixed;
   inset:0;
+  z-index:99999;
   background:#111827;
-
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  transition:opacity .6s ease,visibility .6s ease;
+}
 
-  z-index:99999;
-
-  animation:splashOut .7s ease 2.7s forwards;
+#splash.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
 }
 
 #splash img{
-  width:115px;
-  height:115px;
-
+  width:120px;
+  height:120px;
   object-fit:contain;
-
-  animation:logoIn 1.2s cubic-bezier(.2,.8,.2,1) forwards;
+  animation:logoAnimation 1.3s ease forwards;
 }
-
-
-/* Logo animation */
-
-@keyframes logoIn{
-
-  0%{
-    transform:scale(.55);
-    opacity:0;
-  }
-
-  60%{
-    transform:scale(1.08);
-    opacity:1;
-  }
-
-  100%{
-    transform:scale(1);
-    opacity:1;
-  }
-
-}
-
-
-/* Loading line */
 
 .loader{
-  width:105px;
+  width:110px;
   height:3px;
-
-  margin-top:27px;
-
-  background:rgba(255,255,255,.16);
-
+  margin-top:28px;
+  background:rgba(255,255,255,.18);
   border-radius:20px;
-
   overflow:hidden;
 }
-
 
 .loader-bar{
   width:35%;
   height:100%;
-
   background:white;
-
   border-radius:20px;
-
-  animation:loading 1.1s ease-in-out infinite;
+  animation:loading 1.1s infinite ease-in-out;
 }
 
+@keyframes logoAnimation{
+  0%{
+    transform:scale(.55);
+    opacity:0;
+  }
+  65%{
+    transform:scale(1.08);
+    opacity:1;
+  }
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+}
 
 @keyframes loading{
-
   0%{
     transform:translateX(-120px);
   }
-
   50%{
-    transform:translateX(45px);
+    transform:translateX(100px);
   }
-
   100%{
-    transform:translateX(120px);
+    transform:translateX(240px);
   }
-
 }
 
-
-/* Splash disappearing */
-
-@keyframes splashOut{
-
-  to{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-  }
-
-}
-
-
-/* =========================
-   APP
-========================= */
+/* ================= APP ================= */
 
 .app{
   min-height:100vh;
-  padding-bottom:78px;
+  padding-bottom:82px;
 }
 
-
-/* =========================
-   TOP BAR
-========================= */
+/* ================= TOP ================= */
 
 .topbar{
-
   position:sticky;
   top:0;
-
-  z-index:50;
-
-  background:#ffffff;
-
-  padding:15px 16px;
-
-  border-bottom:1px solid #e7e9ee;
-
+  z-index:100;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #e8eaf0;
+  padding:12px 15px;
 }
-
 
 .toprow{
-
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
-
-  gap:10px;
-
 }
-
 
 .brand{
-
   display:flex;
-
   align-items:center;
-
   gap:9px;
-
 }
-
 
 .logo-small{
-
-  width:39px;
-  height:39px;
-
-  border-radius:12px;
-
-  background:#111827;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  overflow:hidden;
-
-}
-
-
-.logo-small img{
-
-  width:100%;
-  height:100%;
-
-  object-fit:contain;
-
-}
-
-
-.brand h1{
-
-  margin:0;
-
-  font-size:18px;
-
-  font-weight:800;
-
-}
-
-
-.brand p{
-
-  margin:3px 0 0;
-
-  color:#7b808c;
-
-  font-size:10px;
-
-}
-
-
-/* =========================
-   XP
-========================= */
-
-.xp{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:6px;
-
-  padding:7px 10px;
-
-  background:#f5f6ff;
-
-  border:1px solid #e1e3f0;
-
-  border-radius:11px;
-
-  color:#4f46e5;
-
-  font-weight:bold;
-
-  font-size:12px;
-
-}
-
-
-.xp svg{
-
-  width:16px;
-  height:16px;
-
-}
-
-
-/* =========================
-   MAIN
-========================= */
-
-main{
-
-  width:100%;
-
-  max-width:760px;
-
-  margin:auto;
-
-  padding:16px;
-
-}
-
-
-.screen{
-
-  display:none;
-
-}
-
-
-.screen.active{
-
-  display:block;
-
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-
-  padding:21px;
-
-  border-radius:21px;
-
-  background:
-  linear-gradient(
-    135deg,
-    #111827,
-    #303a5c
-  );
-
-  color:white;
-
-}
-
-
-.hero h2{
-
-  margin:0 0 6px;
-
-  font-size:23px;
-
-}
-
-
-.hero p{
-
-  margin:0;
-
-  color:#dce1ed;
-
-  font-size:12px;
-
-  line-height:1.5;
-
-}
-
-
-/* =========================
-   QUICK ACCESS
-========================= */
-
-.quick-title{
-
-  font-size:15px;
-
-  font-weight:700;
-
-  margin:18px 2px 9px;
-
-}
-
-
-.quick-grid{
-
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:8px;
-
-}
-
-
-.quick{
-
-  background:#ffffff;
-
-  border:1px solid #e3e5eb;
-
-  border-radius:13px;
-
-  padding:9px;
-
-  min-height:52px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:7px;
-
-  text-align:left;
-
-}
-
-
-.quick:active{
-
-  transform:scale(.98);
-
-}
-
-
-.quick-icon{
-
-  width:30px;
-  height:30px;
-
-  flex-shrink:0;
-
-  border-radius:8px;
-
-  background:#f0f2ff;
-
-  color:#4f46e5;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-}
-
-
-.quick-icon svg{
-
-  width:15px;
-  height:15px;
-
-}
-
-
-.quick strong{
-
-  display:block;
-
-  font-size:11px;
-
-}
-
-
-.quick span{
-
-  display:block;
-
-  margin-top:2px;
-
-  color:#777;
-
-  font-size:8px;
-
-}
-
-
-/* =========================
-   AI CARD
-========================= */
-
-.ai{
-
-  margin-top:9px;
-
-  width:100%;
-
-  background:#ffffff;
-
-  border:1px solid #e1e3eb;
-
-  border-radius:14px;
-
-  padding:11px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:9px;
-
-  text-align:left;
-
-}
-
-
-.ai:active{
-
-  transform:scale(.99);
-
-}
-
-
-.ai-icon{
-
-  width:32px;
-  height:32px;
-
-  flex-shrink:0;
-
-  border-radius:9px;
-
-  background:#eef7ff;
-
-  color:#2563eb;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-}
-
-
-.ai-icon svg{
-
-  width:18px;
-  height:18px;
-
-}
-
-
-.ai-content{
-
-  flex:1;
-
-}
-
-
-.ai strong{
-
-  display:block;
-
-  font-size:11px;
-
-}
-
-
-.ai span{
-
-  display:block;
-
-  margin-top:3px;
-
-  color:#777;
-
-  font-size:8px;
-
-}
-
-
-/* =========================
-   PAGE HEADER
-========================= */
-
-.page-head{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  margin-bottom:15px;
-
-}
-
-
-.back{
-
-  width:38px;
-  height:38px;
-
-  border:1px solid #e1e3e8;
-
-  background:#ffffff;
-
-  border-radius:11px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-}
-
-
-.back svg{
-
-  width:18px;
-  height:18px;
-
-}
-
-
-.page-head h2{
-
-  margin:0;
-
-  font-size:20px;
-
-}
-
-
-.page-head p{
-
-  margin:3px 0 0;
-
-  color:#777;
-
-  font-size:10px;
-
-}
-
-
-/* =========================
-   CARDS
-========================= */
-
-.card{
-
-  width:100%;
-
-  background:#ffffff;
-
-  border:1px solid #e1e3eb;
-
-  border-radius:16px;
-
-  padding:13px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  text-align:left;
-
-  margin-bottom:9px;
-
-}
-
-
-.card:active{
-
-  transform:scale(.99);
-
-}
-
-
-.num{
-
   width:40px;
   height:40px;
-
-  border-radius:11px;
-
+  border-radius:12px;
+  overflow:hidden;
   background:#111827;
-
-  color:#ffffff;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  font-weight:bold;
-
-  flex-shrink:0;
-
 }
 
-
-.card-content{
-
-  flex:1;
-
+.logo-small img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
-
-.card-content strong{
-
-  display:block;
-
-  font-size:13px;
-
+.brand h1{
+  margin:0;
+  font-size:17px;
+  font-weight:800;
 }
 
-
-.card-content span{
-
-  display:block;
-
-  margin-top:4px;
-
-  color:#777;
-
+.brand p{
+  margin:3px 0 0;
+  color:#818591;
   font-size:9px;
-
-  line-height:1.4;
-
 }
 
+.xp{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  padding:7px 9px;
+  background:#f0f1ff;
+  border:1px solid #dfe1f5;
+  border-radius:10px;
+  color:#5146d8;
+  font-size:11px;
+  font-weight:800;
+}
+
+.xp svg{
+  width:15px;
+  height:15px;
+}
+
+/* ================= MAIN ================= */
+
+main{
+  width:100%;
+  max-width:760px;
+  margin:auto;
+  padding:15px;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
+/* ================= HOME ================= */
+
+.greeting{
+  margin:3px 0 4px;
+  font-size:13px;
+  color:#777d89;
+  font-weight:600;
+}
+
+.hero{
+  margin-top:7px;
+  padding:22px 19px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#111827,#39466b);
+  color:white;
+  box-shadow:0 10px 30px rgba(20,25,40,.13);
+}
+
+.hero h2{
+  margin:0 0 7px;
+  font-size:25px;
+}
+
+.hero p{
+  margin:0;
+  color:#dfe4ef;
+  font-size:11px;
+  line-height:1.6;
+}
+
+.section-title{
+  margin:20px 2px 9px;
+  font-size:15px;
+  font-weight:800;
+}
+
+/* ================= QUICK ACCESS ================= */
+
+.quick-grid{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+}
+
+.quick{
+  min-width:0;
+  min-height:70px;
+  padding:9px 5px;
+  background:white;
+  border:1px solid #e4e6ec;
+  border-radius:13px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  box-shadow:0 3px 12px rgba(20,25,40,.04);
+}
+
+.quick:active{
+  transform:scale(.96);
+}
+
+.quick-icon{
+  width:30px;
+  height:30px;
+  border-radius:9px;
+  background:#f0f1ff;
+  color:#5046d9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.quick-icon svg{
+  width:16px;
+  height:16px;
+}
+
+.quick strong{
+  font-size:9px;
+  white-space:nowrap;
+}
+
+.quick span{
+  display:none;
+}
+
+/* ================= AI HOME ================= */
+
+.ai-card{
+  margin-top:9px;
+  width:100%;
+  padding:12px;
+  background:white;
+  border:1px solid #e2e4eb;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-align:left;
+  box-shadow:0 3px 12px rgba(20,25,40,.04);
+}
+
+.ai-card:active{
+  transform:scale(.99);
+}
+
+.ai-icon{
+  width:35px;
+  height:35px;
+  border-radius:10px;
+  background:#eef6ff;
+  color:#2563eb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.ai-icon svg{
+  width:19px;
+  height:19px;
+}
+
+.ai-content{
+  flex:1;
+}
+
+.ai-content strong{
+  display:block;
+  font-size:12px;
+}
+
+.ai-content span{
+  display:block;
+  margin-top:3px;
+  font-size:9px;
+  color:#7b808b;
+}
 
 .arrow{
-
-  color:#999;
-
+  color:#9ca0aa;
   font-size:20px;
-
 }
 
+/* ================= CARDS ================= */
 
-/* =========================
-   NOTES
-========================= */
+.card{
+  width:100%;
+  margin-bottom:9px;
+  padding:13px;
+  background:white;
+  border:1px solid #e1e3e9;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-align:left;
+  box-shadow:0 3px 12px rgba(20,25,40,.035);
+}
+
+.card:active{
+  transform:scale(.99);
+}
+
+.num{
+  width:40px;
+  height:40px;
+  flex-shrink:0;
+  border-radius:11px;
+  background:#111827;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+}
+
+.card-content{
+  flex:1;
+}
+
+.card-content strong{
+  display:block;
+  font-size:13px;
+}
+
+.card-content span{
+  display:block;
+  margin-top:4px;
+  font-size:9px;
+  line-height:1.4;
+  color:#777c87;
+}
+
+/* ================= PAGE HEADER ================= */
+
+.page-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.back{
+  width:38px;
+  height:38px;
+  flex-shrink:0;
+  border-radius:11px;
+  background:white;
+  border:1px solid #e1e3e9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.back svg{
+  width:18px;
+  height:18px;
+}
+
+.page-head h2{
+  margin:0;
+  font-size:20px;
+}
+
+.page-head p{
+  margin:3px 0 0;
+  color:#7c818c;
+  font-size:10px;
+}
+
+/* ================= NOTES ================= */
 
 .note{
-
-  background:#ffffff;
-
-  border:1px solid #e1e3e8;
-
-  border-radius:17px;
-
+  background:white;
+  border:1px solid #e0e2e8;
+  border-radius:16px;
   padding:16px;
-
   margin-bottom:10px;
-
 }
-
 
 .note h3{
-
   margin:0 0 7px;
-
   font-size:16px;
-
 }
-
 
 .note p{
-
   margin:0;
-
-  font-size:13px;
-
+  color:#454952;
+  font-size:12px;
   line-height:1.7;
-
-  color:#454850;
-
 }
-
 
 .badge{
-
   display:inline-block;
-
-  background:#eef0ff;
-
-  color:#4f46e5;
-
-  padding:5px 7px;
-
-  border-radius:6px;
-
-  font-size:8px;
-
-  font-weight:bold;
-
+  padding:5px 8px;
   margin-bottom:8px;
-
+  border-radius:6px;
+  background:#eef0ff;
+  color:#5146d9;
+  font-size:8px;
+  font-weight:800;
 }
 
+/* ================= PRO NOTE ================= */
 
-/* =========================
-   SETUP
-========================= */
+.pro-card{
+  width:100%;
+  background:white;
+  border:1px solid #dedff0;
+  border-radius:17px;
+  padding:15px;
+  margin-bottom:10px;
+}
+
+.pro-top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.pro-lock{
+  width:40px;
+  height:40px;
+  border-radius:11px;
+  background:#f1f2f7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#5d6370;
+}
+
+.pro-lock svg{
+  width:19px;
+  height:19px;
+}
+
+.pro-info{
+  flex:1;
+}
+
+.pro-info strong{
+  display:block;
+  font-size:13px;
+}
+
+.pro-info span{
+  display:block;
+  margin-top:3px;
+  color:#7b808a;
+  font-size:9px;
+}
+
+.xp-button{
+  margin-top:12px;
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  background:#111827;
+  color:white;
+  font-size:10px;
+  font-weight:800;
+}
+
+/* ================= SETUP ================= */
 
 .setup{
-
-  background:#ffffff;
-
-  border:1px solid #e1e3e8;
-
-  border-radius:18px;
-
-  padding:17px;
-
+  background:white;
+  border:1px solid #e0e2e8;
+  border-radius:17px;
+  padding:16px;
 }
-
 
 .setup h3{
-
   margin:0 0 6px;
-
   font-size:16px;
-
 }
-
 
 .setup p{
-
   margin:0 0 14px;
-
-  color:#777;
-
-  font-size:11px;
-
+  color:#777d88;
+  font-size:10px;
   line-height:1.5;
-
 }
-
 
 .option{
-
   width:100%;
-
   padding:12px;
-
   margin-bottom:8px;
-
-  background:#f8f9fc;
-
-  border:1px solid #e2e4ea;
-
   border-radius:11px;
-
+  background:#f7f8fb;
+  border:1px solid #e1e3e8;
   text-align:left;
-
-  font-size:12px;
-
+  font-size:11px;
+  font-weight:600;
 }
-
 
 .option:active{
-
   transform:scale(.99);
-
 }
 
-
-/* =========================
-   AI PAGE
-========================= */
+/* ================= AI ================= */
 
 .ai-page{
-
   text-align:center;
-
   padding-top:20px;
-
 }
-
 
 .ai-big{
-
-  width:65px;
-  height:65px;
-
-  margin:0 auto 14px;
-
+  width:68px;
+  height:68px;
+  margin:0 auto 13px;
   border-radius:20px;
-
-  background:#eef7ff;
-
+  background:#eef6ff;
   color:#2563eb;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
 }
-
 
 .ai-big svg{
-
-  width:31px;
-  height:31px;
-
+  width:32px;
+  height:32px;
 }
-
 
 .ai-page h2{
-
   margin:0;
-
   font-size:21px;
-
 }
 
+.ai-page > p{
+  color:#777d88;
+  font-size:11px;
+  line-height:1.6;
+}
 
-.ai-page p{
+/* ================= ALARM ================= */
 
-  font-size:12px;
+.alarm-box{
+  text-align:center;
+  background:white;
+  border:1px solid #e1e3e8;
+  border-radius:18px;
+  padding:25px 15px;
+}
 
+.clock{
+  font-size:34px;
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+.alarm-status{
+  font-size:10px;
   color:#777;
-
-  line-height:1.5;
-
+  margin-bottom:15px;
 }
 
+.primary{
+  width:100%;
+  padding:12px;
+  border-radius:11px;
+  background:#111827;
+  color:white;
+  font-size:11px;
+  font-weight:800;
+}
 
-/* =========================
-   BOTTOM NAV
-========================= */
+/* ================= BOTTOM NAV ================= */
 
-.bottom{
-
+.bottom-nav{
   position:fixed;
-
   left:0;
   right:0;
   bottom:0;
-
-  height:68px;
-
-  background:#ffffff;
-
-  border-top:1px solid #e5e7eb;
-
+  height:70px;
+  z-index:1000;
+  background:white;
+  border-top:1px solid #e3e5ea;
   display:flex;
-
+  align-items:center;
   justify-content:space-around;
-
-  align-items:center;
-
-  z-index:100;
-
+  padding:4px 4px env(safe-area-inset-bottom);
 }
 
-
-.nav{
-
-  background:none;
-
-  color:#858994;
-
+.nav-btn{
+  flex:1;
+  height:60px;
+  background:transparent;
+  color:#858995;
   display:flex;
-
   flex-direction:column;
-
   align-items:center;
-
-  gap:3px;
-
-  min-width:55px;
-
+  justify-content:center;
+  gap:4px;
 }
 
-
-.nav svg{
-
+.nav-btn svg{
   width:19px;
   height:19px;
-
 }
 
-
-.nav span{
-
+.nav-btn span{
   font-size:8px;
-
+  font-weight:600;
 }
 
-
-.nav.active{
-
+.nav-btn.active{
   color:#111827;
-
-  font-weight:bold;
-
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:380px){
-
-  main{
-
-    padding:13px;
-
+@media(max-width:370px){
+  .quick-grid{
+    gap:5px;
   }
 
   .quick{
-
-    padding:8px;
-
+    padding:8px 3px;
   }
 
+  .quick strong{
+    font-size:8px;
+  }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =================================
-     SPLASH
-================================= -->
+<!-- ================= SPLASH ================= -->
 
 <div id="splash">
 
-  <img
-    src="logo.png"
-    alt="Notes Wallah Logo"
-  >
+  <img src="logo.png" alt="Notes Wallah">
 
   <div class="loader">
-
     <div class="loader-bar"></div>
-
   </div>
 
 </div>
 
 
-
 <div class="app">
 
-
-<!-- =================================
-     TOP BAR
-================================= -->
+<!-- ================= TOP BAR ================= -->
 
 <header class="topbar">
 
   <div class="toprow">
 
-
     <div class="brand">
 
       <div class="logo-small">
-
-        <img
-          src="logo.png"
-          alt="Logo"
-        >
-
+        <img src="logo.png" alt="Notes Wallah">
       </div>
 
-
       <div>
-
         <h1>Notes Wallah</h1>
-
-        <p>
-          Learn • Practice • Grow
-        </p>
-
+        <p>Learn • Practice • Grow</p>
       </div>
 
     </div>
-
-
-
-    <!-- XP -->
 
     <div class="xp">
 
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-
-        <path
-          d="m12 3 2.3 4.7 5.2.8-3.8 3.7.9 5.2-4.6-2.4-4.6 2.4.9-5.2-3.8-3.7 5.2-.8L12 3Z"
-        />
-
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m12 3 2.3 4.7 5.2.8-3.8 3.7.9 5.2-4.6-2.4-4.6 2.4.9-5.2-3.8-3.7 5.2-.8L12 3Z"/>
       </svg>
 
-      <span id="xpValue">
-        0 XP
-      </span>
+      <span id="xpValue">0 XP</span>
 
     </div>
-
 
   </div>
 
 </header>
 
 
-
 <main>
 
+<!-- ================= HOME ================= -->
 
-<!-- =================================
-     HOME
-================================= -->
+<section id="home" class="screen active">
 
-<section
-  id="home"
-  class="screen active"
->
-
+  <div class="greeting" id="greeting">
+    Good Evening
+  </div>
 
   <div class="hero">
 
-    <h2>
-      Study smarter.
+    <h2 id="heroTitle">
+      Welcome to Notes Wallah
     </h2>
 
-    <p>
-      Notes, tests and AI learning tools
-      — all in one place.
+    <p id="heroText">
+      Your notes, tests and AI study assistant
+      are all in one place.
     </p>
 
   </div>
 
 
-
-  <div class="quick-title">
+  <div class="section-title">
     Quick Access
   </div>
 
 
-
   <div class="quick-grid">
-
 
     <!-- NOTES -->
 
-    <button
-      class="quick"
-      onclick="show('notes')"
-    >
+    <button class="quick" onclick="openNotes()">
 
       <div class="quick-icon">
 
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-
-          <path
-            d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z"
-          />
-
-          <path
-            d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"
-          />
-
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/>
+          <path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/>
         </svg>
 
       </div>
 
-
-      <div>
-
-        <strong>
-          Notes
-        </strong>
-
-        <span>
-          Study material
-        </span>
-
-      </div>
+      <strong>Notes</strong>
 
     </button>
 
 
+    <!-- TEST -->
 
-    <!-- TESTS -->
-
-    <button
-      class="quick"
-      onclick="show('tests')"
-    >
+    <button class="quick" onclick="show('tests')">
 
       <div class="quick-icon">
 
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-
-          <rect
-            x="4"
-            y="3"
-            width="16"
-            height="18"
-            rx="2"
-          />
-
-          <path
-            d="M8 8h8M8 12h8M8 16h5"
-          />
-
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="3" width="16" height="18" rx="2"/>
+          <path d="M8 8h8M8 12h8M8 16h5"/>
         </svg>
 
       </div>
 
-
-      <div>
-
-        <strong>
-          Tests
-        </strong>
-
-        <span>
-          Earn XP
-        </span>
-
-      </div>
+      <strong>Tests</strong>
 
     </button>
 
+
+    <!-- PRO NOTES -->
+
+    <button class="quick" onclick="openProNotes()">
+
+      <div class="quick-icon">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="5" y="10" width="14" height="11" rx="2"/>
+          <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+        </svg>
+
+      </div>
+
+      <strong>Pro Notes</strong>
+
+    </button>
+
+
+    <!-- ALARM -->
+
+    <button class="quick" onclick="show('alarm')">
+
+      <div class="quick-icon">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="13" r="7"/>
+          <path d="M12 9v4l2.5 2"/>
+          <path d="M5 5 3 7M19 5l2 2"/>
+        </svg>
+
+      </div>
+
+      <strong>Alarm</strong>
+
+    </button>
 
   </div>
-
 
 
   <!-- AI -->
 
-  <button
-    class="ai"
-    onclick="show('ai')"
-  >
+  <button class="ai-card" onclick="show('ai')">
 
     <div class="ai-icon">
 
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-
-        <rect
-          x="7"
-          y="7"
-          width="10"
-          height="10"
-          rx="3"
-        />
-
-        <path
-          d="M12 3v4M12 17v4M3 12h4M17 12h4"
-        />
-
-        <path
-          d="M9.5 11h.01M14.5 11h.01M9.5 14h5"
-        />
-
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="7" y="7" width="10" height="10" rx="3"/>
+        <path d="M12 3v4M12 17v4M3 12h4M17 12h4"/>
+        <path d="M9.5 11h.01M14.5 11h.01M9.5 14h5"/>
       </svg>
 
     </div>
-
 
     <div class="ai-content">
 
-      <strong>
-        AI Study Assistant
-      </strong>
+      <strong>AI Study Assistant</strong>
 
-      <span>
-        Ask doubts and get study help
-      </span>
+      <span>Ask doubts and get study help</span>
 
     </div>
 
-
-    <div class="arrow">
-      ›
-    </div>
+    <div class="arrow">›</div>
 
   </button>
 
-
 </section>
 
 
+<!-- ================= NOTES ================= -->
 
-<!-- =================================
-     NOTES
-================================= -->
-
-<section
-  id="notes"
-  class="screen"
->
-
+<section id="notes" class="screen">
 
   <div class="page-head">
 
-    <button
-      class="back"
-      onclick="show('home')"
-    >
+    <button class="back" onclick="show('home')">
 
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-
-        <path
-          d="m15 18-6-6 6-6"
-        />
-
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
       </svg>
 
     </button>
 
-
     <div>
-
-      <h2>
-        Notes
-      </h2>
-
-      <p>
-        Your selected learning path
-      </p>
-
+      <h2>Notes</h2>
+      <p id="notesSubtitle">Your selected learning path</p>
     </div>
 
   </div>
 
-
-  <div id="selectedClass">
-  </div>
-
+  <div id="notesContent"></div>
 
 </section>
 
 
+<!-- ================= CLASS ================= -->
 
-<!-- =================================
-     CLASS
-================================= -->
-
-<section
-  id="class"
-  class="screen"
->
-
+<section id="class" class="screen">
 
   <div class="page-head">
 
-    <button
-      class="back"
-      onclick="show('notes')"
-    >
+    <button class="back" onclick="show('notes')">
 
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-
-        <path
-          d="m15 18-6-6 6-6"
-        />
-
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
       </svg>
 
     </button>
 
-
     <div>
-
-      <h2 id="classTitle">
-        Class
-      </h2>
-
-      <p>
-        Select subject
-      </p>
-
+      <h2 id="classTitle">Class</h2>
+      <p>Subjects</p>
     </div>
 
   </div>
 
 
-  <button
-    class="card"
-    onclick="show('science')"
-  >
+  <button class="card" onclick="show('science')">
 
-    <div class="num">
-      S
-    </div>
-
+    <div class="num">S</div>
 
     <div class="card-content">
 
-      <strong>
-        Science
-      </strong>
+      <strong>Science</strong>
 
       <span>
         Physics • Chemistry • Biology
@@ -1427,25 +929,18 @@ main{
 
     </div>
 
-
-    <div class="arrow">
-      ›
-    </div>
+    <div class="arrow">›</div>
 
   </button>
 
 
-  <div class="card">
+  <button class="card">
 
-    <div class="num">
-      M
-    </div>
+    <div class="num">M</div>
 
     <div class="card-content">
 
-      <strong>
-        Mathematics
-      </strong>
+      <strong>Mathematics</strong>
 
       <span>
         Mathematics notes
@@ -1453,81 +948,61 @@ main{
 
     </div>
 
-    <div class="arrow">
-      ›
+    <div class="arrow">›</div>
+
+  </button>
+
+
+  <button class="card">
+
+    <div class="num">E</div>
+
+    <div class="card-content">
+
+      <strong>English</strong>
+
+      <span>
+        English notes
+      </span>
+
     </div>
 
-  </div>
+    <div class="arrow">›</div>
 
+  </button>
 
 </section>
 
 
+<!-- ================= SCIENCE ================= -->
 
-<!-- =================================
-     SCIENCE
-================================= -->
-
-<section
-  id="science"
-  class="screen"
->
-
+<section id="science" class="screen">
 
   <div class="page-head">
 
-    <button
-      class="back"
-      onclick="show('class')"
-    >
+    <button class="back" onclick="show('class')">
 
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-
-        <path
-          d="m15 18-6-6 6-6"
-        />
-
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
       </svg>
 
     </button>
 
-
     <div>
-
-      <h2>
-        Science
-      </h2>
-
-      <p>
-        Chapters
-      </p>
-
+      <h2>Science</h2>
+      <p>Chapters</p>
     </div>
 
   </div>
 
 
+  <button class="card" onclick="show('life')">
 
-  <button
-    class="card"
-    onclick="show('life')"
-  >
-
-    <div class="num">
-      1
-    </div>
-
+    <div class="num">1</div>
 
     <div class="card-content">
 
-      <strong>
-        Life Processes
-      </strong>
+      <strong>Life Processes</strong>
 
       <span>
         Nutrition • Respiration • Transportation • Excretion
@@ -1535,128 +1010,158 @@ main{
 
     </div>
 
-
-    <div class="arrow">
-      ›
-    </div>
+    <div class="arrow">›</div>
 
   </button>
 
 
+  <button class="card">
 
-  <div class="card">
-
-    <div class="num">
-      2
-    </div>
+    <div class="num">2</div>
 
     <div class="card-content">
 
-      <strong>
-        Control and Coordination
-      </strong>
+      <strong>Control and Coordination</strong>
 
       <span>
-        Chapter notes
+        Nervous system and hormones
       </span>
 
     </div>
 
-    <div class="arrow">
-      ›
-    </div>
+    <div class="arrow">›</div>
 
-  </div>
+  </button>
 
 
+  <button class="card">
 
-  <div class="card">
-
-    <div class="num">
-      3
-    </div>
+    <div class="num">3</div>
 
     <div class="card-content">
 
-      <strong>
-        Reproduction
-      </strong>
+      <strong>How do Organisms Reproduce?</strong>
 
       <span>
-        Chapter notes
+        Reproduction notes
       </span>
 
     </div>
 
-    <div class="arrow">
-      ›
-    </div>
+    <div class="arrow">›</div>
 
-  </div>
-
+  </button>
 
 </section>
 
 
+<!-- ================= LIFE PROCESSES ================= -->
 
-<!-- =================================
-     LIFE PROCESSES
-================================= -->
-
-<section
-  id="life"
-  class="screen"
->
-
+<section id="life" class="screen">
 
   <div class="page-head">
 
-    <button
-      class="back"
-      onclick="show('science')"
-    >
+    <button class="back" onclick="show('science')">
 
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-
-        <path
-          d="m15 18-6-6 6-6"
-        />
-
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
       </svg>
 
     </button>
 
-
     <div>
-
-      <h2>
-        Life Processes
-      </h2>
-
-      <p>
-        Normal Notes
-      </p>
-
+      <h2>Life Processes</h2>
+      <p>Choose your notes</p>
     </div>
 
   </div>
 
 
+  <!-- NORMAL NOTES -->
+
+  <button class="card" onclick="show('normalLife')">
+
+    <div class="num">
+
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/>
+        <path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/>
+      </svg>
+
+    </div>
+
+    <div class="card-content">
+
+      <strong>Normal Notes</strong>
+
+      <span>
+        Easy chapter notes
+      </span>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+  </button>
+
+
+  <!-- PRO NOTES -->
+
+  <button class="card" onclick="show('proLife')">
+
+    <div class="num">
+
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="5" y="10" width="14" height="11" rx="2"/>
+        <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+      </svg>
+
+    </div>
+
+    <div class="card-content">
+
+      <strong>Pro Notes</strong>
+
+      <span>
+        Detailed PDF • Unlock with 50 XP
+      </span>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+  </button>
+
+</section>
+
+
+<!-- ================= NORMAL LIFE ================= -->
+
+<section id="normalLife" class="screen">
+
+  <div class="page-head">
+
+    <button class="back" onclick="show('life')">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+
+    </button>
+
+    <div>
+      <h2>Normal Notes</h2>
+      <p>Life Processes</p>
+    </div>
+
+  </div>
+
 
   <div class="note">
 
-    <span class="badge">
-      NORMAL NOTES
-    </span>
+    <span class="badge">LIFE PROCESSES</span>
 
-    <h3>
-      What are Life Processes?
-    </h3>
+    <h3>What are Life Processes?</h3>
 
     <p>
       Life processes are the basic activities
@@ -1666,12 +1171,9 @@ main{
   </div>
 
 
-
   <div class="note">
 
-    <h3>
-      Nutrition
-    </h3>
+    <h3>Nutrition</h3>
 
     <p>
       Nutrition is the process by which organisms
@@ -1682,12 +1184,9 @@ main{
   </div>
 
 
-
   <div class="note">
 
-    <h3>
-      Respiration
-    </h3>
+    <h3>Respiration</h3>
 
     <p>
       Respiration is the process through which
@@ -1697,27 +1196,21 @@ main{
   </div>
 
 
-
   <div class="note">
 
-    <h3>
-      Transportation
-    </h3>
+    <h3>Transportation</h3>
 
     <p>
-      Transportation involves movement of water,
-      nutrients, gases and wastes within an organism.
+      Transportation involves movement of
+      materials within an organism.
     </p>
 
   </div>
 
 
-
   <div class="note">
 
-    <h3>
-      Excretion
-    </h3>
+    <h3>Excretion</h3>
 
     <p>
       Excretion is the removal of metabolic
@@ -1726,258 +1219,851 @@ main{
 
   </div>
 
-
-
-  <!-- PRO NOTES -->
-
-  <div class="note">
-
-    <span class="badge">
-      PRO NOTES • 50 XP
-    </span>
-
-    <h3>
-      Detailed Pro Notes
-    </h3>
-
-    <p>
-      Pro Notes will require 50 XP.
-      PDF upload and ad unlock will be
-      connected in upcoming parts.
-    </p>
-
-  </div>
-
-
 </section>
 
 
+<!-- ================= PRO LIFE ================= -->
 
-<!-- =================================
-     TESTS
-================================= -->
-
-<section
-  id="tests"
-  class="screen"
->
-
+<section id="proLife" class="screen">
 
   <div class="page-head">
 
-    <button
-      class="back"
-      onclick="show('home')"
-    >
+    <button class="back" onclick="show('life')">
 
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-
-        <path
-          d="m15 18-6-6 6-6"
-        />
-
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
       </svg>
 
     </button>
 
-
     <div>
-
-      <h2>
-        Tests
-      </h2>
-
-      <p>
-        Practice and earn XP
-      </p>
-
+      <h2>Pro Notes</h2>
+      <p>Life Processes</p>
     </div>
 
   </div>
 
 
+  <div class="pro-card">
+
+    <div class="pro-top">
+
+      <div class="pro-lock">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="5" y="10" width="14" height="11" rx="2"/>
+          <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+        </svg>
+
+      </div>
+
+      <div class="pro-info">
+
+        <strong>Life Processes — Pro Notes</strong>
+
+        <span>
+          Detailed PDF notes
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <p style="font-size:10px;color:#777;line-height:1.5;margin:13px 0 0;">
+      This Pro PDF requires 50 XP.
+      Later we will also add the advertisement
+      unlock option here.
+    </p>
+
+
+    <button class="xp-button" onclick="unlockPro()">
+      Unlock with 50 XP
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= TESTS ================= -->
+
+<section id="tests" class="screen">
+
+  <div class="page-head">
+
+    <button class="back" onclick="show('home')">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+
+    </button>
+
+    <div>
+      <h2>Test Zone</h2>
+      <p>Practice and earn XP</p>
+    </div>
+
+  </div>
+
 
   <div class="note">
 
-    <h3>
-      Test Zone
-    </h3>
+    <span class="badge">XP SYSTEM</span>
+
+    <h3>Chapter Tests</h3>
 
     <p>
-      Chapter-wise MCQ tests will be added here.
-      Completing tests will reward XP.
+      Take tests and earn XP.
+      Your XP will later be used to unlock Pro Notes.
     </p>
 
   </div>
 
 
+  <button class="card" onclick="startTest()">
+
+    <div class="num">50</div>
+
+    <div class="card-content">
+
+      <strong>MCQ Test</strong>
+
+      <span>
+        50 questions • Earn XP
+      </span>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+  </button>
+
 </section>
 
 
+<!-- ================= ALARM ================= -->
 
-<!-- =================================
-     AI
-================================= -->
+<section id="alarm" class="screen">
 
-<section
-  id="ai"
-  class="screen"
->
+  <div class="page-head">
 
+    <button class="back" onclick="show('home')">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+
+    </button>
+
+    <div>
+      <h2>Study Alarm</h2>
+      <p>Stay on schedule</p>
+    </div>
+
+  </div>
+
+
+  <div class="alarm-box">
+
+    <div class="clock" id="clock">
+      00:00
+    </div>
+
+    <div class="alarm-status">
+      Study reminder
+    </div>
+
+    <button class="primary" onclick="setAlarm()">
+      Set Study Alarm
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= AI ================= -->
+
+<section id="ai" class="screen">
 
   <div class="ai-page">
 
-
     <div class="ai-big">
 
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-
-        <rect
-          x="7"
-          y="7"
-          width="10"
-          height="10"
-          rx="3"
-        />
-
-        <path
-          d="M12 3v4M12 17v4M3 12h4M17 12h4"
-        />
-
-        <path
-          d="M9.5 11h.01M14.5 11h.01M9.5 14h5"
-        />
-
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="7" y="7" width="10" height="10" rx="3"/>
+        <path d="M12 3v4M12 17v4M3 12h4M17 12h4"/>
+        <path d="M9.5 11h.01M14.5 11h.01M9.5 14h5"/>
       </svg>
 
     </div>
 
-
-    <h2>
-      AI Study Assistant
-    </h2>
-
+    <h2>AI Study Assistant</h2>
 
     <p>
-      Ask doubts and get help with your
-      selected class or competitive exam.
+      Ask doubts, understand concepts and
+      prepare according to your selected class
+      or competitive exam.
     </p>
-
 
     <div class="note">
 
+      <h3>AI Assistant</h3>
+
       <p>
-        AI connection will be added in
-        the upcoming development part.
+        AI chat connection will be added in the
+        next development stage.
       </p>
 
     </div>
 
-
   </div>
-
 
 </section>
 
 
+<!-- ================= PROFILE ================= -->
 
-<!-- =================================
-     PROFILE
-================================= -->
-
-<section
-  id="profile"
-  class="screen"
->
-
+<section id="profile" class="screen">
 
   <div class="page-head">
 
-    <button
-      class="back"
-      onclick="show('home')"
-    >
-
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-
-        <path
-          d="m15 18-6-6 6-6"
-        />
-
-      </svg>
-
-    </button>
-
-
     <div>
 
-      <h2>
-        Profile
-      </h2>
+      <h2>Profile</h2>
 
-      <p>
-        Learning settings
-      </p>
+      <p>Your learning settings</p>
 
     </div>
 
   </div>
-
 
 
   <div class="setup">
 
-    <h3>
-      Your Learning Path
-    </h3>
-
+    <h3>Learning Path</h3>
 
     <p id="currentPath">
       No class or exam selected.
     </p>
 
-
-    <button
-      class="option"
-      onclick="show('setup')"
-    >
+    <button class="option" onclick="show('setup')">
       Change Class / Exam
     </button>
 
   </div>
 
-
 </section>
 
 
+<!-- ================= SETUP ================= -->
 
-<!-- =================================
-     SETUP
-================================= -->
-
-<section
-  id="setup"
-  class="screen"
->
-
+<section id="setup" class="screen">
 
   <div class="page-head">
 
-    <button
-      class="back"
-      onclick="show('
+    <button class="back" onclick="show('profile')">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+
+    </button>
+
+    <div>
+
+      <h2>Learning Setup</h2>
+
+      <p>Select your preparation</p>
+
+    </div>
+
+  </div>
+
+
+  <div class="setup">
+
+    <h3>School Classes</h3>
+
+    <p>
+      Select one class. The app will show
+      content for that selected class.
+    </p>
+
+    <div id="classOptions"></div>
+
+
+    <h3 style="margin-top:20px;">
+      Competitive Exams
+    </h3>
+
+    <button class="option" onclick="selectPath('NEET')">
+      NEET
+    </button>
+
+    <button class="option" onclick="selectPath('JEE')">
+      JEE
+    </button>
+
+    <button class="option" onclick="selectPath('CUET')">
+      CUET
+    </button>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= BOTTOM NAV ================= -->
+
+<nav class="bottom-nav">
+
+
+  <!-- HOME -->
+
+  <button class="nav-btn active" onclick="show('home',this)">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"/>
+      <path d="M9 21v-6h6v6"/>
+    </svg>
+
+    <span>Home</span>
+
+  </button>
+
+
+  <!-- NOTES -->
+
+  <button class="nav-btn" onclick="openNotes(this)">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/>
+      <path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/>
+    </svg>
+
+    <span>Notes</span>
+
+  </button>
+
+
+  <!-- TESTS -->
+
+  <button class="nav-btn" onclick="show('tests',this)">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="4" y="3" width="16" height="18" rx="2"/>
+      <path d="M8 8h8M8 12h8M8 16h5"/>
+    </svg>
+
+    <span>Tests</span>
+
+  </button>
+
+
+  <!-- AI -->
+
+  <button class="nav-btn" onclick="show('ai',this)">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="7" y="7" width="10" height="10" rx="3"/>
+      <path d="M12 3v4M12 17v4M3 12h4M17 12h4"/>
+      <path d="M9.5 11h.01M14.5 11h.01M9.5 14h5"/>
+    </svg>
+
+    <span>AI</span>
+
+  </button>
+
+
+  <!-- PROFILE -->
+
+  <button class="nav-btn" onclick="show('profile',this)">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="8" r="4"/>
+      <path d="M4 21a8 8 0 0 1 16 0"/>
+    </svg>
+
+    <span>Profile</span>
+
+  </button>
+
+</nav>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let selectedPath =
+  localStorage.getItem("selectedPath") || "";
+
+let xp =
+  Number(localStorage.getItem("xp") || 0);
+
+
+/* =========================================
+   XP
+========================================= */
+
+function updateXP(){
+
+  document.getElementById("xpValue").textContent =
+    xp + " XP";
+
+}
+
+updateXP();
+
+
+/* =========================================
+   GREETING
+========================================= */
+
+function updateGreeting(){
+
+  const hour =
+    new Date().getHours();
+
+  let greeting="Good Evening";
+
+  if(hour < 12){
+
+    greeting="Good Morning";
+
+  }else if(hour < 17){
+
+    greeting="Good Afternoon";
+
+  }
+
+  document.getElementById("greeting").textContent =
+    greeting;
+
+}
+
+updateGreeting();
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+function show(id,button){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(function(screen){
+
+      screen.classList.remove("active");
+
+    });
+
+
+  const page =
+    document.getElementById(id);
+
+  if(page){
+
+    page.classList.add("active");
+
+  }
+
+
+  if(button){
+
+    document
+      .querySelectorAll(".nav-btn")
+      .forEach(function(btn){
+
+        btn.classList.remove("active");
+
+      });
+
+    button.classList.add("active");
+
+  }
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+
+  if(id==="notes"){
+
+    renderNotes();
+
+  }
+
+}
+
+
+/* =========================================
+   NOTES
+========================================= */
+
+function openNotes(button){
+
+  show("notes",button);
+
+}
+
+
+function renderNotes(){
+
+  const box =
+    document.getElementById("notesContent");
+
+
+  if(!selectedPath){
+
+    box.innerHTML = `
+
+      <div class="setup">
+
+        <h3>
+          Choose your class or exam
+        </h3>
+
+        <p>
+          Select your learning path first.
+        </p>
+
+        <button
+          class="option"
+          onclick="show('setup')"
+        >
+          Select Class / Exam
+        </button>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  if(selectedPath.startsWith("Class")){
+
+    document.getElementById("notesSubtitle").textContent =
+      selectedPath + " Notes";
+
+
+    box.innerHTML = `
+
+      <button
+        class="card"
+        onclick="openSelectedClass()"
+      >
+
+        <div class="num">
+          ${selectedPath.replace("Class ","")}
+        </div>
+
+        <div class="card-content">
+
+          <strong>
+            ${selectedPath}
+          </strong>
+
+          <span>
+            Subjects and chapters
+          </span>
+
+        </div>
+
+        <div class="arrow">›</div>
+
+      </button>
+
+    `;
+
+  }else{
+
+    document.getElementById("notesSubtitle").textContent =
+      selectedPath + " Preparation";
+
+
+    box.innerHTML = `
+
+      <div class="note">
+
+        <span class="badge">
+          ${selectedPath}
+        </span>
+
+        <h3>
+          ${selectedPath} Syllabus
+        </h3>
+
+        <p>
+          Complete ${selectedPath} subjects,
+          syllabus, chapters, notes and tests
+          will appear here.
+        </p>
+
+      </div>
+
+      <button class="card">
+
+        <div class="num">S</div>
+
+        <div class="card-content">
+
+          <strong>
+            ${selectedPath} Subjects
+          </strong>
+
+          <span>
+            Full syllabus will be connected
+            in the upcoming stage.
+          </span>
+
+        </div>
+
+        <div class="arrow">›</div>
+
+      </button>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================================
+   SELECTED CLASS
+========================================= */
+
+function openSelectedClass(){
+
+  document.getElementById("classTitle").textContent =
+    selectedPath;
+
+  show("class");
+
+}
+
+
+/* =========================================
+   PRO NOTES
+========================================= */
+
+function openProNotes(){
+
+  if(!selectedPath){
+
+    show("setup");
+
+    return;
+
+  }
+
+  show("proLife");
+
+}
+
+
+function unlockPro(){
+
+  if(xp >= 50){
+
+    xp -= 50;
+
+    localStorage.setItem("xp",xp);
+
+    updateXP();
+
+    alert(
+      "Pro Notes unlocked! PDF connection will be added in the next stage."
+    );
+
+  }else{
+
+    alert(
+      "You need 50 XP to unlock Pro Notes. Complete tests to earn XP."
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   TEST
+========================================= */
+
+function startTest(){
+
+  alert(
+    "Test system is ready for the next development stage. Completing tests will award XP."
+  );
+
+}
+
+
+/* =========================================
+   ALARM
+========================================= */
+
+function updateClock(){
+
+  const now =
+    new Date();
+
+  const h =
+    String(now.getHours()).padStart(2,"0");
+
+  const m =
+    String(now.getMinutes()).padStart(2,"0");
+
+  document.getElementById("clock").textContent =
+    h + ":" + m;
+
+}
+
+updateClock();
+
+setInterval(updateClock,1000);
+
+
+function setAlarm(){
+
+  alert(
+    "Study Alarm setup will be connected in the next development stage."
+  );
+
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+function updateProfile(){
+
+  const element =
+    document.getElementById("currentPath");
+
+
+  if(selectedPath){
+
+    element.textContent =
+      "Currently selected: " + selectedPath;
+
+  }else{
+
+    element.textContent =
+      "No class or exam selected.";
+
+  }
+
+}
+
+updateProfile();
+
+
+/* =========================================
+   CLASS OPTIONS
+========================================= */
+
+function createClassOptions(){
+
+  const box =
+    document.getElementById("classOptions");
+
+
+  for(let i=1;i<=12;i++){
+
+    const button =
+      document.createElement("button");
+
+    button.className="option";
+
+    button.textContent =
+      "Class " + i;
+
+    button.onclick=function(){
+
+      selectPath("Class " + i);
+
+    };
+
+    box.appendChild(button);
+
+  }
+
+}
+
+createClassOptions();
+
+
+/* =========================================
+   SELECT PATH
+========================================= */
+
+function selectPath(path){
+
+  selectedPath =
+    path;
+
+  localStorage.setItem(
+    "selectedPath",
+    path
+  );
+
+  updateProfile();
+
+  renderNotes();
+
+  document.getElementById("heroTitle").textContent =
+    "Welcome back";
+
+  document.getElementById("heroText").textContent =
+    "Your learning path: " + path;
+
+  show("home");
+
+}
+
+
+/* =========================================
+   SPLASH
+========================================= */
+
+window.addEventListener(
+  "load",
+  function(){
+
+    setTimeout(
+      function(){
+
+        document
+          .getElementById("splash")
+          .classList.add("hide");
+
+      },
+      3000
+    );
+
+  }
+);
+
+</script>
+
+</body>
+</html>
