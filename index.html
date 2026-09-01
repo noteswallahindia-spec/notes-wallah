@@ -1,29 +1,372 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+  <meta charset="UTF-8">
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <meta
-      name="theme-color"
-      content="#ffffff"
-    />
+  <title>Notes Wallah</title>
 
-    <meta
-      name="description"
-      content="Notes Wallah - Learn, Practice and Grow"
-    />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-    <title>Notes Wallah</title>
-  </head>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #17181c;
+    }
 
-  <body>
-    <div id="root"></div>
+    .app {
+      min-height: 100vh;
+      padding-bottom: 90px;
+    }
 
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    header {
+      padding: 22px 18px;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    header p {
+      margin: 6px 0 0;
+      color: #777;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px 16px;
+    }
+
+    .hero {
+      padding: 25px 20px;
+      border-radius: 22px;
+      background: #111827;
+      color: white;
+    }
+
+    .hero .icon {
+      font-size: 38px;
+    }
+
+    .hero h2 {
+      margin: 10px 0 5px;
+      font-size: 25px;
+    }
+
+    .hero p {
+      margin: 0;
+      color: #d7dbe5;
+      line-height: 1.5;
+    }
+
+    .section-title {
+      margin: 25px 2px 12px;
+      font-size: 18px;
+    }
+
+    .class-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      width: 100%;
+      padding: 17px;
+
+      border: 1px solid #e2e4ea;
+      border-radius: 20px;
+
+      background: white;
+    }
+
+    .class-number {
+      width: 55px;
+      height: 55px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border-radius: 16px;
+      background: #eef2ff;
+
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .class-info {
+      text-align: left;
+    }
+
+    .class-info h3 {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .class-info p {
+      margin: 5px 0 0;
+      color: #777;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .chapter {
+      margin-top: 15px;
+      padding: 18px;
+
+      border-radius: 20px;
+      background: white;
+      border: 1px solid #e2e4ea;
+    }
+
+    .chapter-number {
+      display: inline-block;
+      padding: 6px 10px;
+
+      border-radius: 8px;
+      background: #eef2ff;
+
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .chapter h3 {
+      margin: 12px 0 6px;
+      font-size: 18px;
+    }
+
+    .chapter p {
+      margin: 0;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .notes-box {
+      margin-top: 15px;
+      padding: 20px;
+
+      border-radius: 20px;
+      background: white;
+      border: 1px solid #e2e4ea;
+    }
+
+    .notes-box h3 {
+      margin-top: 0;
+    }
+
+    .notes-box h4 {
+      margin-bottom: 6px;
+    }
+
+    .notes-box p {
+      color: #444;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      display: flex;
+      justify-content: space-around;
+
+      padding: 11px 4px;
+
+      background: white;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .bottom-nav div {
+      text-align: center;
+      color: #777;
+      font-size: 19px;
+    }
+
+    .bottom-nav span {
+      display: block;
+      margin-top: 3px;
+      font-size: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header>
+      <h1>📚 Notes Wallah</h1>
+      <p>Learn • Practice • Grow</p>
+    </header>
+
+    <main>
+
+      <section class="hero">
+        <div class="icon">📖</div>
+
+        <h2>Study Notes</h2>
+
+        <p>
+          Easy and simple notes for your classes,
+          subjects and chapters.
+        </p>
+      </section>
+
+
+      <h2 class="section-title">
+        Classes
+      </h2>
+
+
+      <div class="class-card">
+
+        <div class="class-number">
+          10
+        </div>
+
+        <div class="class-info">
+
+          <h3>
+            Class 10
+          </h3>
+
+          <p>
+            Science • Mathematics • Social Science
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <h2 class="section-title">
+        Science
+      </h2>
+
+
+      <div class="chapter">
+
+        <span class="chapter-number">
+          CHAPTER 1
+        </span>
+
+        <h3>
+          Life Processes
+        </h3>
+
+        <p>
+          Nutrition • Respiration • Transportation • Excretion
+        </p>
+
+      </div>
+
+
+      <div class="notes-box">
+
+        <h3>
+          📖 Normal Notes
+        </h3>
+
+        <h4>
+          What are Life Processes?
+        </h4>
+
+        <p>
+          Life processes are the basic activities
+          performed by living organisms to maintain life.
+        </p>
+
+        <h4>
+          Nutrition
+        </h4>
+
+        <p>
+          Nutrition is the process by which organisms
+          obtain and use food for energy, growth,
+          repair and maintenance.
+        </p>
+
+        <h4>
+          Respiration
+        </h4>
+
+        <p>
+          Respiration is the process through which cells
+          obtain usable energy from food.
+        </p>
+
+        <h4>
+          Transportation
+        </h4>
+
+        <p>
+          Transportation involves the movement of
+          materials such as water, nutrients, gases
+          and wastes within an organism.
+        </p>
+
+        <h4>
+          Excretion
+        </h4>
+
+        <p>
+          Excretion is the removal of metabolic waste
+          products from the body.
+        </p>
+
+      </div>
+
+    </main>
+
+
+    <nav class="bottom-nav">
+
+      <div>
+        🏠
+        <span>Home</span>
+      </div>
+
+      <div>
+        📚
+        <span>Notes</span>
+      </div>
+
+      <div>
+        📝
+        <span>Tests</span>
+      </div>
+
+      <div>
+        ⭐
+        <span>XP</span>
+      </div>
+
+      <div>
+        👤
+        <span>Profile</span>
+      </div>
+
+    </nav>
+
+  </div>
+
+</body>
 </html>
