@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Notes Wallah</title>
 
 <style>
+
+/* =========================
+   BASIC
+========================= */
+
 *{
   box-sizing:border-box;
 }
@@ -13,710 +19,1407 @@
 html,body{
   margin:0;
   padding:0;
-  font-family:Inter,Arial,sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   background:#f5f7fb;
   color:#15171c;
 }
 
 button{
   font:inherit;
+  border:0;
   cursor:pointer;
 }
 
-.app{
-  min-height:100vh;
-  padding-bottom:82px;
-}
 
-.topbar{
-  background:#ffffff;
-  padding:18px 18px 16px;
-  border-bottom:1px solid #e8eaf0;
-  position:sticky;
-  top:0;
-  z-index:20;
-}
+/* =========================
+   SPLASH SCREEN
+========================= */
 
-.toprow{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:11px;
-}
-
-.brand-logo{
-  width:42px;
-  height:42px;
-  border-radius:13px;
-  background:#111827;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-}
-
-.brand-logo svg{
-  width:23px;
-  height:23px;
-}
-
-.brand h1{
-  margin:0;
-  font-size:19px;
-  font-weight:800;
-}
-
-.brand p{
-  margin:3px 0 0;
-  color:#7b808c;
-  font-size:11px;
-}
-
-.xp-box{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  padding:8px 11px;
-  border:1px solid #e3e5eb;
-  background:#fafbff;
-  border-radius:12px;
-}
-
-.xp-icon{
-  width:25px;
-  height:25px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:8px;
-  background:#eef0ff;
-  color:#4f46e5;
-}
-
-.xp-icon svg{
-  width:15px;
-  height:15px;
-}
-
-.xp-text{
-  line-height:1.1;
-}
-
-.xp-text strong{
-  display:block;
-  font-size:12px;
-}
-
-.xp-text span{
-  color:#777;
-  font-size:9px;
-}
-
-main{
-  width:100%;
-  max-width:760px;
-  margin:auto;
-  padding:18px 16px;
-}
-
-.screen{
-  display:none;
-}
-
-.screen.active{
-  display:block;
-}
-
-.hero{
-  padding:23px;
-  border-radius:23px;
-  background:linear-gradient(135deg,#111827,#293354);
-  color:white;
-  box-shadow:0 14px 35px rgba(17,24,39,.14);
-}
-
-.hero h2{
-  margin:0 0 7px;
-  font-size:25px;
-}
-
-.hero p{
-  margin:0;
-  color:#dce1ed;
-  font-size:13px;
-  line-height:1.5;
-}
-
-.hero-icon{
-  width:48px;
-  height:48px;
-  border-radius:15px;
-  background:rgba(255,255,255,.12);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:15px;
-}
-
-.hero-icon svg{
-  width:25px;
-  height:25px;
-}
-
-.section-title{
-  margin:24px 2px 12px;
-  font-size:17px;
-}
-
-.quick-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.feature-card{
-  border:1px solid #e3e5eb;
-  background:#fff;
-  border-radius:19px;
-  padding:17px;
-  text-align:left;
-  transition:.15s;
-}
-
-.feature-card:active{
-  transform:scale(.98);
-}
-
-.icon-box{
-  width:43px;
-  height:43px;
-  border-radius:13px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#f0f2ff;
-  color:#4f46e5;
-  margin-bottom:12px;
-}
-
-.icon-box svg{
-  width:21px;
-  height:21px;
-}
-
-.feature-card h3{
-  margin:0 0 5px;
-  font-size:15px;
-}
-
-.feature-card p{
-  margin:0;
-  color:#777;
-  font-size:11px;
-  line-height:1.4;
-}
-
-.ai-card{
-  margin-top:13px;
-  width:100%;
-  border:1px solid #e1e3ed;
-  border-radius:19px;
-  background:white;
-  padding:18px;
-  display:flex;
-  align-items:center;
-  gap:13px;
-  text-align:left;
-}
-
-.ai-card .icon-box{
-  margin:0;
-  flex-shrink:0;
-  background:#eef7ff;
-  color:#2563eb;
-}
-
-.ai-card-content{
-  flex:1;
-}
-
-.ai-card h3{
-  margin:0 0 4px;
-  font-size:15px;
-}
-
-.ai-card p{
-  margin:0;
-  color:#777;
-  font-size:11px;
-}
-
-.arrow{
-  color:#888;
-  font-size:20px;
-}
-
-.page-head{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  margin-bottom:17px;
-}
-
-.back{
-  width:41px;
-  height:41px;
-  border:1px solid #e1e3e8;
-  border-radius:12px;
-  background:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.back svg{
-  width:19px;
-}
-
-.page-head h2{
-  margin:0;
-  font-size:21px;
-}
-
-.page-head p{
-  margin:3px 0 0;
-  color:#777;
-  font-size:11px;
-}
-
-.list-card{
-  width:100%;
-  border:1px solid #e2e4ea;
-  border-radius:18px;
-  background:white;
-  padding:16px;
-  display:flex;
-  align-items:center;
-  gap:13px;
-  text-align:left;
-  margin-bottom:11px;
-}
-
-.number{
-  width:44px;
-  height:44px;
-  border-radius:13px;
-  background:#111827;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-  flex-shrink:0;
-}
-
-.list-content{
-  flex:1;
-}
-
-.list-content strong{
-  display:block;
-  font-size:14px;
-}
-
-.list-content span{
-  display:block;
-  margin-top:4px;
-  color:#777;
-  font-size:10px;
-  line-height:1.4;
-}
-
-.note{
-  background:white;
-  border:1px solid #e1e3e8;
-  border-radius:20px;
-  padding:20px;
-  margin-bottom:12px;
-}
-
-.note h3{
-  margin:0 0 8px;
-  font-size:17px;
-}
-
-.note p{
-  margin:0;
-  color:#454850;
-  font-size:14px;
-  line-height:1.75;
-}
-
-.badge{
-  display:inline-block;
-  padding:5px 8px;
-  border-radius:7px;
-  background:#eef0ff;
-  color:#4f46e5;
-  font-size:9px;
-  font-weight:800;
-  margin-bottom:10px;
-}
-
-.locked{
-  opacity:.65;
-}
-
-.bottom-nav{
+#splash{
   position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  height:72px;
-  background:rgba(255,255,255,.97);
-  border-top:1px solid #e5e7eb;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  z-index:50;
-  backdrop-filter:blur(10px);
-}
+  inset:0;
+  background:#111827;
 
-.nav-btn{
-  border:0;
-  background:transparent;
-  color:#858994;
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:4px;
-  min-width:60px;
+  justify-content:center;
+
+  z-index:99999;
+
+  animation:splashOut .7s ease 2.7s forwards;
 }
 
-.nav-btn svg{
-  width:20px;
-  height:20px;
+#splash img{
+  width:115px;
+  height:115px;
+
+  object-fit:contain;
+
+  animation:logoIn 1.2s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
-.nav-btn span{
-  font-size:9px;
+
+/* Logo animation */
+
+@keyframes logoIn{
+
+  0%{
+    transform:scale(.55);
+    opacity:0;
+  }
+
+  60%{
+    transform:scale(1.08);
+    opacity:1;
+  }
+
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+
 }
 
-.nav-btn.active{
-  color:#111827;
+
+/* Loading line */
+
+.loader{
+  width:105px;
+  height:3px;
+
+  margin-top:27px;
+
+  background:rgba(255,255,255,.16);
+
+  border-radius:20px;
+
+  overflow:hidden;
+}
+
+
+.loader-bar{
+  width:35%;
+  height:100%;
+
+  background:white;
+
+  border-radius:20px;
+
+  animation:loading 1.1s ease-in-out infinite;
+}
+
+
+@keyframes loading{
+
+  0%{
+    transform:translateX(-120px);
+  }
+
+  50%{
+    transform:translateX(45px);
+  }
+
+  100%{
+    transform:translateX(120px);
+  }
+
+}
+
+
+/* Splash disappearing */
+
+@keyframes splashOut{
+
+  to{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app{
+  min-height:100vh;
+  padding-bottom:78px;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+
+  position:sticky;
+  top:0;
+
+  z-index:50;
+
+  background:#ffffff;
+
+  padding:15px 16px;
+
+  border-bottom:1px solid #e7e9ee;
+
+}
+
+
+.toprow{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+}
+
+
+.brand{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:9px;
+
+}
+
+
+.logo-small{
+
+  width:39px;
+  height:39px;
+
+  border-radius:12px;
+
+  background:#111827;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
+
+}
+
+
+.logo-small img{
+
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
+
+}
+
+
+.brand h1{
+
+  margin:0;
+
+  font-size:18px;
+
   font-weight:800;
+
 }
+
+
+.brand p{
+
+  margin:3px 0 0;
+
+  color:#7b808c;
+
+  font-size:10px;
+
+}
+
+
+/* =========================
+   XP
+========================= */
+
+.xp{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:6px;
+
+  padding:7px 10px;
+
+  background:#f5f6ff;
+
+  border:1px solid #e1e3f0;
+
+  border-radius:11px;
+
+  color:#4f46e5;
+
+  font-weight:bold;
+
+  font-size:12px;
+
+}
+
+
+.xp svg{
+
+  width:16px;
+  height:16px;
+
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+
+  width:100%;
+
+  max-width:760px;
+
+  margin:auto;
+
+  padding:16px;
+
+}
+
+
+.screen{
+
+  display:none;
+
+}
+
+
+.screen.active{
+
+  display:block;
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+  padding:21px;
+
+  border-radius:21px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #111827,
+    #303a5c
+  );
+
+  color:white;
+
+}
+
+
+.hero h2{
+
+  margin:0 0 6px;
+
+  font-size:23px;
+
+}
+
+
+.hero p{
+
+  margin:0;
+
+  color:#dce1ed;
+
+  font-size:12px;
+
+  line-height:1.5;
+
+}
+
+
+/* =========================
+   QUICK ACCESS
+========================= */
+
+.quick-title{
+
+  font-size:15px;
+
+  font-weight:700;
+
+  margin:18px 2px 9px;
+
+}
+
+
+.quick-grid{
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:8px;
+
+}
+
+
+.quick{
+
+  background:#ffffff;
+
+  border:1px solid #e3e5eb;
+
+  border-radius:13px;
+
+  padding:9px;
+
+  min-height:52px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:7px;
+
+  text-align:left;
+
+}
+
+
+.quick:active{
+
+  transform:scale(.98);
+
+}
+
+
+.quick-icon{
+
+  width:30px;
+  height:30px;
+
+  flex-shrink:0;
+
+  border-radius:8px;
+
+  background:#f0f2ff;
+
+  color:#4f46e5;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
+
+
+.quick-icon svg{
+
+  width:15px;
+  height:15px;
+
+}
+
+
+.quick strong{
+
+  display:block;
+
+  font-size:11px;
+
+}
+
+
+.quick span{
+
+  display:block;
+
+  margin-top:2px;
+
+  color:#777;
+
+  font-size:8px;
+
+}
+
+
+/* =========================
+   AI CARD
+========================= */
+
+.ai{
+
+  margin-top:9px;
+
+  width:100%;
+
+  background:#ffffff;
+
+  border:1px solid #e1e3eb;
+
+  border-radius:14px;
+
+  padding:11px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:9px;
+
+  text-align:left;
+
+}
+
+
+.ai:active{
+
+  transform:scale(.99);
+
+}
+
+
+.ai-icon{
+
+  width:32px;
+  height:32px;
+
+  flex-shrink:0;
+
+  border-radius:9px;
+
+  background:#eef7ff;
+
+  color:#2563eb;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
+
+
+.ai-icon svg{
+
+  width:18px;
+  height:18px;
+
+}
+
+
+.ai-content{
+
+  flex:1;
+
+}
+
+
+.ai strong{
+
+  display:block;
+
+  font-size:11px;
+
+}
+
+
+.ai span{
+
+  display:block;
+
+  margin-top:3px;
+
+  color:#777;
+
+  font-size:8px;
+
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-head{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-bottom:15px;
+
+}
+
+
+.back{
+
+  width:38px;
+  height:38px;
+
+  border:1px solid #e1e3e8;
+
+  background:#ffffff;
+
+  border-radius:11px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
+
+
+.back svg{
+
+  width:18px;
+  height:18px;
+
+}
+
+
+.page-head h2{
+
+  margin:0;
+
+  font-size:20px;
+
+}
+
+
+.page-head p{
+
+  margin:3px 0 0;
+
+  color:#777;
+
+  font-size:10px;
+
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+
+  width:100%;
+
+  background:#ffffff;
+
+  border:1px solid #e1e3eb;
+
+  border-radius:16px;
+
+  padding:13px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  text-align:left;
+
+  margin-bottom:9px;
+
+}
+
+
+.card:active{
+
+  transform:scale(.99);
+
+}
+
+
+.num{
+
+  width:40px;
+  height:40px;
+
+  border-radius:11px;
+
+  background:#111827;
+
+  color:#ffffff;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-weight:bold;
+
+  flex-shrink:0;
+
+}
+
+
+.card-content{
+
+  flex:1;
+
+}
+
+
+.card-content strong{
+
+  display:block;
+
+  font-size:13px;
+
+}
+
+
+.card-content span{
+
+  display:block;
+
+  margin-top:4px;
+
+  color:#777;
+
+  font-size:9px;
+
+  line-height:1.4;
+
+}
+
+
+.arrow{
+
+  color:#999;
+
+  font-size:20px;
+
+}
+
+
+/* =========================
+   NOTES
+========================= */
+
+.note{
+
+  background:#ffffff;
+
+  border:1px solid #e1e3e8;
+
+  border-radius:17px;
+
+  padding:16px;
+
+  margin-bottom:10px;
+
+}
+
+
+.note h3{
+
+  margin:0 0 7px;
+
+  font-size:16px;
+
+}
+
+
+.note p{
+
+  margin:0;
+
+  font-size:13px;
+
+  line-height:1.7;
+
+  color:#454850;
+
+}
+
+
+.badge{
+
+  display:inline-block;
+
+  background:#eef0ff;
+
+  color:#4f46e5;
+
+  padding:5px 7px;
+
+  border-radius:6px;
+
+  font-size:8px;
+
+  font-weight:bold;
+
+  margin-bottom:8px;
+
+}
+
+
+/* =========================
+   SETUP
+========================= */
+
+.setup{
+
+  background:#ffffff;
+
+  border:1px solid #e1e3e8;
+
+  border-radius:18px;
+
+  padding:17px;
+
+}
+
+
+.setup h3{
+
+  margin:0 0 6px;
+
+  font-size:16px;
+
+}
+
+
+.setup p{
+
+  margin:0 0 14px;
+
+  color:#777;
+
+  font-size:11px;
+
+  line-height:1.5;
+
+}
+
+
+.option{
+
+  width:100%;
+
+  padding:12px;
+
+  margin-bottom:8px;
+
+  background:#f8f9fc;
+
+  border:1px solid #e2e4ea;
+
+  border-radius:11px;
+
+  text-align:left;
+
+  font-size:12px;
+
+}
+
+
+.option:active{
+
+  transform:scale(.99);
+
+}
+
+
+/* =========================
+   AI PAGE
+========================= */
 
 .ai-page{
+
   text-align:center;
-  padding-top:25px;
+
+  padding-top:20px;
+
 }
+
 
 .ai-big{
-  width:70px;
-  height:70px;
-  margin:10px auto 16px;
-  border-radius:22px;
+
+  width:65px;
+  height:65px;
+
+  margin:0 auto 14px;
+
+  border-radius:20px;
+
   background:#eef7ff;
+
   color:#2563eb;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
 }
+
 
 .ai-big svg{
-  width:34px;
-  height:34px;
+
+  width:31px;
+  height:31px;
+
 }
+
 
 .ai-page h2{
+
   margin:0;
-  font-size:23px;
+
+  font-size:21px;
+
 }
+
 
 .ai-page p{
+
+  font-size:12px;
+
   color:#777;
-  font-size:13px;
+
   line-height:1.5;
+
 }
 
-.coming{
-  margin-top:20px;
-  padding:18px;
-  background:white;
-  border:1px dashed #d7d9df;
-  border-radius:18px;
-  color:#777;
-  font-size:12px;
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom{
+
+  position:fixed;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  height:68px;
+
+  background:#ffffff;
+
+  border-top:1px solid #e5e7eb;
+
+  display:flex;
+
+  justify-content:space-around;
+
+  align-items:center;
+
+  z-index:100;
+
 }
+
+
+.nav{
+
+  background:none;
+
+  color:#858994;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  gap:3px;
+
+  min-width:55px;
+
+}
+
+
+.nav svg{
+
+  width:19px;
+  height:19px;
+
+}
+
+
+.nav span{
+
+  font-size:8px;
+
+}
+
+
+.nav.active{
+
+  color:#111827;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:380px){
-  .quick-grid{
-    grid-template-columns:1fr;
+
+  main{
+
+    padding:13px;
+
   }
 
-  .hero{
-    padding:20px;
+  .quick{
+
+    padding:8px;
+
   }
+
 }
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =================================
+     SPLASH
+================================= -->
+
+<div id="splash">
+
+  <img
+    src="logo.png"
+    alt="Notes Wallah Logo"
+  >
+
+  <div class="loader">
+
+    <div class="loader-bar"></div>
+
+  </div>
+
+</div>
+
+
 
 <div class="app">
 
+
+<!-- =================================
+     TOP BAR
+================================= -->
+
 <header class="topbar">
+
   <div class="toprow">
+
 
     <div class="brand">
 
-      <div class="brand-logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/>
-          <path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/>
-        </svg>
+      <div class="logo-small">
+
+        <img
+          src="logo.png"
+          alt="Logo"
+        >
+
       </div>
+
 
       <div>
+
         <h1>Notes Wallah</h1>
-        <p>Learn • Practice • Grow</p>
+
+        <p>
+          Learn • Practice • Grow
+        </p>
+
       </div>
 
     </div>
 
-    <div class="xp-box">
 
-      <div class="xp-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="m12 3 2.3 4.7 5.2.8-3.8 3.7.9 5.2-4.6-2.4-4.6 2.4.9-5.2-3.8-3.7 5.2-.8L12 3Z"/>
-        </svg>
-      </div>
 
-      <div class="xp-text">
-        <strong>0 XP</strong>
-        <span>Your XP</span>
-      </div>
+    <!-- XP -->
+
+    <div class="xp">
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+
+        <path
+          d="m12 3 2.3 4.7 5.2.8-3.8 3.7.9 5.2-4.6-2.4-4.6 2.4.9-5.2-3.8-3.7 5.2-.8L12 3Z"
+        />
+
+      </svg>
+
+      <span id="xpValue">
+        0 XP
+      </span>
 
     </div>
+
 
   </div>
+
 </header>
+
 
 
 <main>
 
-<!-- HOME -->
 
-<section id="home" class="screen active">
+<!-- =================================
+     HOME
+================================= -->
 
-  <section class="hero">
+<section
+  id="home"
+  class="screen active"
+>
 
-    <div class="hero-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 3 4 7l8 4 8-4-8-4Z"/>
-        <path d="m4 12 8 4 8-4"/>
-        <path d="m4 17 8 4 8-4"/>
-      </svg>
-    </div>
 
-    <h2>Study smarter.</h2>
+  <div class="hero">
+
+    <h2>
+      Study smarter.
+    </h2>
 
     <p>
-      Notes, practice tests and AI learning tools
-      — everything in one place.
+      Notes, tests and AI learning tools
+      — all in one place.
     </p>
 
-  </section>
+  </div>
 
 
-  <h3 class="section-title">
+
+  <div class="quick-title">
     Quick Access
-  </h3>
+  </div>
+
 
 
   <div class="quick-grid">
 
-    <button class="feature-card" onclick="showScreen('notes')">
 
-      <div class="icon-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/>
-          <path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/>
+    <!-- NOTES -->
+
+    <button
+      class="quick"
+      onclick="show('notes')"
+    >
+
+      <div class="quick-icon">
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+
+          <path
+            d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z"
+          />
+
+          <path
+            d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"
+          />
+
         </svg>
+
       </div>
 
-      <h3>Notes</h3>
 
-      <p>
-        Class and chapter-wise study notes.
-      </p>
+      <div>
+
+        <strong>
+          Notes
+        </strong>
+
+        <span>
+          Study material
+        </span>
+
+      </div>
 
     </button>
 
 
-    <button class="feature-card" onclick="showScreen('tests')">
 
-      <div class="icon-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="4" y="3" width="16" height="18" rx="2"/>
-          <path d="m8 8 1.5 1.5L12 7"/>
-          <path d="M14 9h3"/>
-          <path d="m8 14 1.5 1.5L12 13"/>
-          <path d="M14 15h3"/>
+    <!-- TESTS -->
+
+    <button
+      class="quick"
+      onclick="show('tests')"
+    >
+
+      <div class="quick-icon">
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+
+          <rect
+            x="4"
+            y="3"
+            width="16"
+            height="18"
+            rx="2"
+          />
+
+          <path
+            d="M8 8h8M8 12h8M8 16h5"
+          />
+
         </svg>
+
       </div>
 
-      <h3>Tests</h3>
 
-      <p>
-        Practice MCQs and earn XP.
-      </p>
+      <div>
+
+        <strong>
+          Tests
+        </strong>
+
+        <span>
+          Earn XP
+        </span>
+
+      </div>
 
     </button>
+
 
   </div>
 
 
-  <button class="ai-card" onclick="showScreen('ai')">
 
-    <div class="icon-box">
+  <!-- AI -->
 
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 3v3"/>
-        <path d="M12 18v3"/>
-        <path d="M3 12h3"/>
-        <path d="M18 12h3"/>
-        <rect x="7" y="7" width="10" height="10" rx="3"/>
-        <path d="M9.5 11h.01"/>
-        <path d="M14.5 11h.01"/>
-        <path d="M9.5 14h5"/>
+  <button
+    class="ai"
+    onclick="show('ai')"
+  >
+
+    <div class="ai-icon">
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+
+        <rect
+          x="7"
+          y="7"
+          width="10"
+          height="10"
+          rx="3"
+        />
+
+        <path
+          d="M12 3v4M12 17v4M3 12h4M17 12h4"
+        />
+
+        <path
+          d="M9.5 11h.01M14.5 11h.01M9.5 14h5"
+        />
+
       </svg>
 
     </div>
 
-    <div class="ai-card-content">
 
-      <h3>AI Study Assistant</h3>
+    <div class="ai-content">
 
-      <p>
-        Ask doubts and get help with your studies.
-      </p>
-
-    </div>
-
-    <span class="arrow">›</span>
-
-  </button>
-
-</section>
-
-
-<!-- NOTES -->
-
-<section id="notes" class="screen">
-
-  <div class="page-head">
-
-    <button class="back" onclick="showScreen('home')">
-
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="m15 18-6-6 6-6"/>
-      </svg>
-
-    </button>
-
-    <div>
-      <h2>Notes</h2>
-      <p>Select your class</p>
-    </div>
-
-  </div>
-
-
-  <button class="list-card" onclick="showScreen('class10')">
-
-    <div class="number">10</div>
-
-    <div class="list-content">
-
-      <strong>Class 10</strong>
+      <strong>
+        AI Study Assistant
+      </strong>
 
       <span>
-        Science • Mathematics • Social Science
+        Ask doubts and get study help
       </span>
 
     </div>
 
-    <span class="arrow">›</span>
+
+    <div class="arrow">
+      ›
+    </div>
 
   </button>
 
 
-  <div class="list-card locked">
-
-    <div class="number">9</div>
-
-    <div class="list-content">
-
-      <strong>Class 9</strong>
-
-      <span>
-        Notes coming soon
-      </span>
-
-    </div>
-
-    <span class="arrow">🔒</span>
-
-  </div>
-
 </section>
 
 
-<!-- CLASS 10 -->
 
-<section id="class10" class="screen">
+<!-- =================================
+     NOTES
+================================= -->
+
+<section
+  id="notes"
+  class="screen"
+>
+
 
   <div class="page-head">
 
-    <button class="back" onclick="showScreen('notes')">
+    <button
+      class="back"
+      onclick="show('home')"
+    >
 
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="m15 18-6-6 6-6"/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+
+        <path
+          d="m15 18-6-6 6-6"
+        />
+
       </svg>
 
     </button>
 
+
     <div>
-      <h2>Class 10</h2>
-      <p>Select subject</p>
+
+      <h2>
+        Notes
+      </h2>
+
+      <p>
+        Your selected learning path
+      </p>
+
     </div>
 
   </div>
 
 
-  <button class="list-card" onclick="showScreen('science')">
+  <div id="selectedClass">
+  </div>
 
-    <div class="icon-box" style="margin:0">
 
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M9 3h6"/>
-        <path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/>
-        <path d="M8 15h8"/>
+</section>
+
+
+
+<!-- =================================
+     CLASS
+================================= -->
+
+<section
+  id="class"
+  class="screen"
+>
+
+
+  <div class="page-head">
+
+    <button
+      class="back"
+      onclick="show('notes')"
+    >
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+
+        <path
+          d="m15 18-6-6 6-6"
+        />
+
       </svg>
+
+    </button>
+
+
+    <div>
+
+      <h2 id="classTitle">
+        Class
+      </h2>
+
+      <p>
+        Select subject
+      </p>
 
     </div>
 
-    <div class="list-content">
+  </div>
 
-      <strong>Science</strong>
+
+  <button
+    class="card"
+    onclick="show('science')"
+  >
+
+    <div class="num">
+      S
+    </div>
+
+
+    <div class="card-content">
+
+      <strong>
+        Science
+      </strong>
 
       <span>
         Physics • Chemistry • Biology
@@ -724,69 +1427,107 @@ main{
 
     </div>
 
-    <span class="arrow">›</span>
+
+    <div class="arrow">
+      ›
+    </div>
 
   </button>
 
 
-  <div class="list-card locked">
+  <div class="card">
 
-    <div class="icon-box" style="margin:0">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 20h16"/>
-        <path d="M6 17V7"/>
-        <path d="M10 17V4"/>
-        <path d="M14 17v-7"/>
-        <path d="M18 17V5"/>
-      </svg>
+    <div class="num">
+      M
     </div>
 
-    <div class="list-content">
+    <div class="card-content">
 
-      <strong>Mathematics</strong>
+      <strong>
+        Mathematics
+      </strong>
 
       <span>
-        Coming soon
+        Mathematics notes
       </span>
 
     </div>
 
-    <span>🔒</span>
-
-  </div>
-
-</section>
-
-
-<!-- SCIENCE -->
-
-<section id="science" class="screen">
-
-  <div class="page-head">
-
-    <button class="back" onclick="showScreen('class10')">
-
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="m15 18-6-6 6-6"/>
-      </svg>
-
-    </button>
-
-    <div>
-      <h2>Science</h2>
-      <p>Class 10 chapters</p>
+    <div class="arrow">
+      ›
     </div>
 
   </div>
 
 
-  <button class="list-card" onclick="showScreen('life')">
+</section>
 
-    <div class="number">1</div>
 
-    <div class="list-content">
 
-      <strong>Life Processes</strong>
+<!-- =================================
+     SCIENCE
+================================= -->
+
+<section
+  id="science"
+  class="screen"
+>
+
+
+  <div class="page-head">
+
+    <button
+      class="back"
+      onclick="show('class')"
+    >
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+
+        <path
+          d="m15 18-6-6 6-6"
+        />
+
+      </svg>
+
+    </button>
+
+
+    <div>
+
+      <h2>
+        Science
+      </h2>
+
+      <p>
+        Chapters
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <button
+    class="card"
+    onclick="show('life')"
+  >
+
+    <div class="num">
+      1
+    </div>
+
+
+    <div class="card-content">
+
+      <strong>
+        Life Processes
+      </strong>
 
       <span>
         Nutrition • Respiration • Transportation • Excretion
@@ -794,67 +1535,117 @@ main{
 
     </div>
 
-    <span class="arrow">›</span>
+
+    <div class="arrow">
+      ›
+    </div>
 
   </button>
 
 
-  <div class="list-card locked">
 
-    <div class="number">2</div>
+  <div class="card">
 
-    <div class="list-content">
+    <div class="num">
+      2
+    </div>
 
-      <strong>Control and Coordination</strong>
+    <div class="card-content">
 
-      <span>Coming soon</span>
+      <strong>
+        Control and Coordination
+      </strong>
+
+      <span>
+        Chapter notes
+      </span>
 
     </div>
 
-    <span>🔒</span>
+    <div class="arrow">
+      ›
+    </div>
 
   </div>
 
 
-  <div class="list-card locked">
 
-    <div class="number">3</div>
+  <div class="card">
 
-    <div class="list-content">
+    <div class="num">
+      3
+    </div>
 
-      <strong>How do Organisms Reproduce?</strong>
+    <div class="card-content">
 
-      <span>Coming soon</span>
+      <strong>
+        Reproduction
+      </strong>
+
+      <span>
+        Chapter notes
+      </span>
 
     </div>
 
-    <span>🔒</span>
+    <div class="arrow">
+      ›
+    </div>
 
   </div>
+
 
 </section>
 
 
-<!-- LIFE PROCESSES -->
 
-<section id="life" class="screen">
+<!-- =================================
+     LIFE PROCESSES
+================================= -->
+
+<section
+  id="life"
+  class="screen"
+>
+
 
   <div class="page-head">
 
-    <button class="back" onclick="showScreen('science')">
+    <button
+      class="back"
+      onclick="show('science')"
+    >
 
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="m15 18-6-6 6-6"/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+
+        <path
+          d="m15 18-6-6 6-6"
+        />
+
       </svg>
 
     </button>
 
+
     <div>
-      <h2>Life Processes</h2>
-      <p>Class 10 • Science</p>
+
+      <h2>
+        Life Processes
+      </h2>
+
+      <p>
+        Normal Notes
+      </p>
+
     </div>
 
   </div>
+
 
 
   <div class="note">
@@ -868,338 +1659,325 @@ main{
     </h3>
 
     <p>
-      Life processes are the basic activities performed
-      by living organisms to maintain life. Major life
-      processes include nutrition, respiration,
-      transportation and excretion.
+      Life processes are the basic activities
+      performed by living organisms to maintain life.
     </p>
 
   </div>
+
 
 
   <div class="note">
-
-    <h3>Nutrition</h3>
-
-    <p>
-      Nutrition is the process by which organisms obtain
-      and use food for energy, growth, repair and
-      maintenance.
-    </p>
-
-  </div>
-
-
-  <div class="note">
-
-    <h3>Photosynthesis</h3>
-
-    <p>
-      Green plants prepare food using carbon dioxide and
-      water in the presence of sunlight and chlorophyll.
-      Oxygen is released during this process.
-    </p>
-
-  </div>
-
-
-  <div class="note">
-
-    <h3>Respiration</h3>
-
-    <p>
-      Respiration is the process through which cells
-      obtain usable energy from food. Aerobic respiration
-      occurs in the presence of oxygen.
-    </p>
-
-  </div>
-
-
-  <div class="note">
-
-    <h3>Transportation</h3>
-
-    <p>
-      Transportation involves movement of materials such
-      as water, nutrients, gases and wastes within an
-      organism.
-    </p>
-
-  </div>
-
-
-  <div class="note">
-
-    <h3>Excretion</h3>
-
-    <p>
-      Excretion is the removal of metabolic waste products
-      from the body. In humans, kidneys are major
-      excretory organs.
-    </p>
-
-  </div>
-
-
-  <div class="note locked">
-
-    <span class="badge">
-      PRO NOTES
-    </span>
 
     <h3>
-      Detailed PDF Notes
+      Nutrition
     </h3>
 
     <p>
-      Pro Notes will be unlocked using XP in a later
-      version.
+      Nutrition is the process by which organisms
+      obtain and use food for energy, growth,
+      repair and maintenance.
     </p>
 
   </div>
 
+
+
+  <div class="note">
+
+    <h3>
+      Respiration
+    </h3>
+
+    <p>
+      Respiration is the process through which
+      cells obtain usable energy from food.
+    </p>
+
+  </div>
+
+
+
+  <div class="note">
+
+    <h3>
+      Transportation
+    </h3>
+
+    <p>
+      Transportation involves movement of water,
+      nutrients, gases and wastes within an organism.
+    </p>
+
+  </div>
+
+
+
+  <div class="note">
+
+    <h3>
+      Excretion
+    </h3>
+
+    <p>
+      Excretion is the removal of metabolic
+      waste products from the body.
+    </p>
+
+  </div>
+
+
+
+  <!-- PRO NOTES -->
+
+  <div class="note">
+
+    <span class="badge">
+      PRO NOTES • 50 XP
+    </span>
+
+    <h3>
+      Detailed Pro Notes
+    </h3>
+
+    <p>
+      Pro Notes will require 50 XP.
+      PDF upload and ad unlock will be
+      connected in upcoming parts.
+    </p>
+
+  </div>
+
+
 </section>
 
 
-<!-- TESTS -->
 
-<section id="tests" class="screen">
+<!-- =================================
+     TESTS
+================================= -->
+
+<section
+  id="tests"
+  class="screen"
+>
+
 
   <div class="page-head">
 
-    <button class="back" onclick="showScreen('home')">
+    <button
+      class="back"
+      onclick="show('home')"
+    >
 
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="m15 18-6-6 6-6"/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+
+        <path
+          d="m15 18-6-6 6-6"
+        />
+
       </svg>
 
     </button>
 
+
     <div>
-      <h2>Tests</h2>
-      <p>Practice and earn XP</p>
+
+      <h2>
+        Tests
+      </h2>
+
+      <p>
+        Practice and earn XP
+      </p>
+
     </div>
 
   </div>
 
 
+
   <div class="note">
 
-    <h3>Test Zone</h3>
+    <h3>
+      Test Zone
+    </h3>
 
     <p>
       Chapter-wise MCQ tests will be added here.
-      Completing tests will later reward XP.
+      Completing tests will reward XP.
     </p>
 
   </div>
 
-</section>
-
-
-<!-- AI -->
-
-<section id="ai" class="screen ai-page">
-
-  <div class="ai-big">
-
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 3v3"/>
-      <path d="M12 18v3"/>
-      <path d="M3 12h3"/>
-      <path d="M18 12h3"/>
-      <rect x="7" y="7" width="10" height="10" rx="3"/>
-      <path d="M9.5 11h.01"/>
-      <path d="M14.5 11h.01"/>
-      <path d="M9.5 14h5"/>
-    </svg>
-
-  </div>
-
-  <h2>AI Study Assistant</h2>
-
-  <p>
-    Ask questions, clear doubts and get study help
-    in your preferred language.
-  </p>
-
-  <div class="coming">
-    AI assistant will be connected in a later part.
-  </div>
 
 </section>
 
 
-<!-- PROFILE -->
 
-<section id="profile" class="screen">
+<!-- =================================
+     AI
+================================= -->
+
+<section
+  id="ai"
+  class="screen"
+>
+
+
+  <div class="ai-page">
+
+
+    <div class="ai-big">
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+
+        <rect
+          x="7"
+          y="7"
+          width="10"
+          height="10"
+          rx="3"
+        />
+
+        <path
+          d="M12 3v4M12 17v4M3 12h4M17 12h4"
+        />
+
+        <path
+          d="M9.5 11h.01M14.5 11h.01M9.5 14h5"
+        />
+
+      </svg>
+
+    </div>
+
+
+    <h2>
+      AI Study Assistant
+    </h2>
+
+
+    <p>
+      Ask doubts and get help with your
+      selected class or competitive exam.
+    </p>
+
+
+    <div class="note">
+
+      <p>
+        AI connection will be added in
+        the upcoming development part.
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =================================
+     PROFILE
+================================= -->
+
+<section
+  id="profile"
+  class="screen"
+>
+
 
   <div class="page-head">
 
-    <button class="back" onclick="showScreen('home')">
+    <button
+      class="back"
+      onclick="show('home')"
+    >
 
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="m15 18-6-6 6-6"/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+
+        <path
+          d="m15 18-6-6 6-6"
+        />
+
       </svg>
 
     </button>
 
+
     <div>
-      <h2>Profile</h2>
-      <p>Your learning account</p>
+
+      <h2>
+        Profile
+      </h2>
+
+      <p>
+        Learning settings
+      </p>
+
     </div>
 
   </div>
 
 
-  <div class="note">
 
-    <h3>Student</h3>
+  <div class="setup">
 
-    <p>
-      XP: 0<br>
-      Current goal: Keep learning.
+    <h3>
+      Your Learning Path
+    </h3>
+
+
+    <p id="currentPath">
+      No class or exam selected.
     </p>
+
+
+    <button
+      class="option"
+      onclick="show('setup')"
+    >
+      Change Class / Exam
+    </button>
 
   </div>
 
+
 </section>
 
-</main>
 
 
-<nav class="bottom-nav">
+<!-- =================================
+     SETUP
+================================= -->
 
-  <button class="nav-btn active" onclick="showScreen('home')">
-
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"/>
-      <path d="M9 21v-6h6v6"/>
-    </svg>
-
-    <span>Home</span>
-
-  </button>
+<section
+  id="setup"
+  class="screen"
+>
 
 
-  <button class="nav-btn" onclick="showScreen('notes')">
+  <div class="page-head">
 
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/>
-      <path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/>
-    </svg>
-
-    <span>Notes</span>
-
-  </button>
-
-
-  <button class="nav-btn" onclick="showScreen('tests')">
-
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <rect x="4" y="3" width="16" height="18" rx="2"/>
-      <path d="M8 8h8"/>
-      <path d="M8 12h8"/>
-      <path d="M8 16h5"/>
-    </svg>
-
-    <span>Tests</span>
-
-  </button>
-
-
-  <button class="nav-btn" onclick="showScreen('ai')">
-
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <rect x="7" y="7" width="10" height="10" rx="3"/>
-      <path d="M12 3v4M12 17v4M3 12h4M17 12h4"/>
-    </svg>
-
-    <span>AI</span>
-
-  </button>
-
-
-  <button class="nav-btn" onclick="showScreen('profile')">
-
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="8" r="4"/>
-      <path d="M4 21a8 8 0 0 1 16 0"/>
-    </svg>
-
-    <span>Profile</span>
-
-  </button>
-
-</nav>
-
-</div>
-
-
-<script>
-
-function showScreen(screenId){
-
-  const screens =
-    document.querySelectorAll(".screen");
-
-  screens.forEach(function(screen){
-
-    screen.classList.remove("active");
-
-  });
-
-
-  const selected =
-    document.getElementById(screenId);
-
-  if(selected){
-
-    selected.classList.add("active");
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-  }
-
-
-  const navButtons =
-    document.querySelectorAll(".nav-btn");
-
-  navButtons.forEach(function(button){
-
-    button.classList.remove("active");
-
-  });
-
-
-  if(
-    screenId === "home" ||
-    screenId === "notes" ||
-    screenId === "tests" ||
-    screenId === "ai" ||
-    screenId === "profile"
-  ){
-
-    const indexMap = {
-      home:0,
-      notes:1,
-      tests:2,
-      ai:3,
-      profile:4
-    };
-
-    navButtons[indexMap[screenId]]
-      .classList.add("active");
-
-  }
-
-}
-
-</script>
-
-</body>
-</html>
+    <button
+      class="back"
+      onclick="show('
