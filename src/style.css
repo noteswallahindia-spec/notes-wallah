@@ -6,8 +6,8 @@ html,
 body,
 #root {
   margin: 0;
-  min-height: 100%;
   width: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -23,47 +23,249 @@ body {
   color: #17181c;
 }
 
-button {
+button,
+input {
   font: inherit;
 }
 
-.app {
-  min-height: 100vh;
-  background: #f7f8fc;
-  padding-bottom: 90px;
-  transition: 0.25s ease;
+button {
+  cursor: pointer;
 }
 
-.app.dark {
-  background: #101114;
-  color: #f5f5f5;
+/* =========================
+   AUTH
+========================= */
+
+.auth-page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #eef2ff,
+      #f7f8fc 55%
+    );
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 30px 24px;
+
+  background: white;
+
+  border: 1px solid #e5e7ee;
+
+  border-radius: 26px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.brand-icon {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 16px;
+
+  border-radius: 20px;
+
+  background: #eef2ff;
+
+  font-size: 32px;
+}
+
+.auth-card h1 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.auth-subtitle {
+  margin: 7px 0 26px;
+
+  text-align: center;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-card label {
+  margin: 13px 0 7px;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.auth-card input {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid #dfe1e8;
+
+  border-radius: 13px;
+
+  outline: none;
+
+  background: #fafbfc;
+}
+
+.auth-card input:focus {
+  border-color: #6b73ff;
+
+  background: white;
+}
+
+.password-box {
+  display: flex;
+
+  align-items: center;
+
+  border: 1px solid #dfe1e8;
+
+  border-radius: 13px;
+
+  background: #fafbfc;
+
+  overflow: hidden;
+}
+
+.password-box input {
+  border: 0;
+
+  border-radius: 0;
+
+  background: transparent;
+}
+
+.password-box button {
+  width: 48px;
+
+  border: 0;
+
+  background: transparent;
+
+  font-size: 18px;
+}
+
+.form-error {
+  margin: 10px 0 0;
+
+  color: #d93025;
+
+  font-size: 13px;
+}
+
+.primary-button {
+  width: 100%;
+
+  margin-top: 22px;
+
+  padding: 14px;
+
+  border: 0;
+
+  border-radius: 13px;
+
+  background: #111827;
+
+  color: white;
+
+  font-weight: 700;
+
+  font-size: 15px;
+}
+
+.primary-button:active {
+  transform: scale(0.98);
+}
+
+.switch-text {
+  margin: 20px 0 0;
+
+  text-align: center;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+.switch-text button {
+  margin-left: 5px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #4f46e5;
+
+  font-weight: 700;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.app {
+  min-height: 100vh;
+
+  padding-bottom: 90px;
+
+  background: #f7f8fc;
+
+  color: #17181c;
 }
 
 .topbar {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   padding: 20px 18px;
 
   background: white;
-  border-bottom: 1px solid #e8e8e8;
-}
 
-.dark .topbar {
-  background: #18191d;
-  border-color: #292a2f;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .topbar h1 {
   margin: 0;
+
   font-size: 25px;
+
   font-weight: 800;
 }
 
 .topbar p {
   margin: 5px 0 0;
+
   color: #777;
+
   font-size: 13px;
 }
 
@@ -72,65 +274,56 @@ button {
   height: 44px;
 
   border: 0;
+
   border-radius: 50%;
 
   background: #f1f2f5;
 
-  cursor: pointer;
   font-size: 19px;
 }
 
-.dark .theme-button {
-  background: #292a30;
-}
-
-main {
+.app main {
   width: 100%;
   max-width: 900px;
 
   margin: auto;
+
   padding: 20px 16px;
 }
 
-.hero {
-  padding: 30px 20px;
+.welcome-card {
+  padding: 28px 20px;
 
   text-align: center;
 
   border-radius: 24px;
 
-  background: linear-gradient(
-    135deg,
-    #ffffff,
-    #f0f3ff
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #eef2ff
+    );
 
-  border: 1px solid #e4e7f0;
+  border: 1px solid #e2e5f0;
 }
 
-.dark .hero {
-  background: #191a1f;
-  border-color: #2b2c32;
+.welcome-icon {
+  font-size: 42px;
+
+  margin-bottom: 8px;
 }
 
-.hero-icon {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.hero h2 {
+.welcome-card h2 {
   margin: 0;
 
-  font-size: 25px;
-  line-height: 1.2;
+  font-size: 24px;
 }
 
-.hero p {
-  margin: 12px 0 0;
+.welcome-card p {
+  margin: 8px 0 0;
 
-  color: #707070;
-
-  line-height: 1.5;
+  color: #777;
 }
 
 .cards {
@@ -152,24 +345,12 @@ main {
   border: 1px solid #e5e6eb;
 
   border-radius: 20px;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.dark .card {
-  background: #191a1f;
-  border-color: #2b2c32;
-}
-
-.card:active {
-  transform: scale(0.98);
 }
 
 .card-icon {
+  margin-bottom: 10px;
+
   font-size: 30px;
-  margin-bottom: 12px;
 }
 
 .card h3 {
@@ -188,6 +369,28 @@ main {
   line-height: 1.4;
 }
 
+.logout-button {
+  width: 100%;
+
+  margin-top: 22px;
+
+  padding: 13px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 13px;
+
+  background: white;
+
+  color: #333;
+
+  font-weight: 700;
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
 .bottom-nav {
   position: fixed;
 
@@ -201,20 +404,13 @@ main {
 
   justify-content: space-around;
 
-  padding:
-    10px 4px
-    calc(10px + env(safe-area-inset-bottom));
+  padding: 10px 4px;
 
   background: rgba(255, 255, 255, 0.96);
 
   border-top: 1px solid #e5e5e5;
 
   backdrop-filter: blur(12px);
-}
-
-.dark .bottom-nav {
-  background: rgba(24, 25, 29, 0.96);
-  border-color: #2b2c32;
 }
 
 .bottom-nav button {
@@ -236,8 +432,6 @@ main {
 
   color: #777;
 
-  cursor: pointer;
-
   font-size: 18px;
 }
 
@@ -245,41 +439,64 @@ main {
   font-size: 10px;
 }
 
-.dark .bottom-nav button {
-  color: #aaa;
-}
-
-@media (min-width: 700px) {
-
-  .topbar {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  main {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .cards {
-    grid-template-columns:
-      repeat(4, minmax(0, 1fr));
-  }
-
-  .hero {
-    padding: 50px 30px;
-  }
-
-}
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 380px) {
+
+  .auth-card {
+    padding: 25px 18px;
+  }
 
   .cards {
     grid-template-columns: 1fr;
   }
 
-  .hero h2 {
-    font-size: 22px;
-  }
+}
 
+/* =========================
+   DARK MODE
+========================= */
+
+.dark-mode body {
+  background: #101114;
+  color: #f5f5f5;
+}
+
+.dark-mode .app {
+  background: #101114;
+  color: #f5f5f5;
+}
+
+.dark-mode .topbar {
+  background: #18191d;
+  border-color: #292a2f;
+}
+
+.dark-mode .topbar p,
+.dark-mode .card p,
+.dark-mode .welcome-card p {
+  color: #aaa;
+}
+
+.dark-mode .welcome-card,
+.dark-mode .card {
+  background: #191a1f;
+  border-color: #2b2c32;
+}
+
+.dark-mode .bottom-nav {
+  background: rgba(24, 25, 29, 0.96);
+  border-color: #2b2c32;
+}
+
+.dark-mode .bottom-nav button {
+  color: #aaa;
+}
+
+.dark-mode .logout-button {
+  background: #191a1f;
+  color: #eee;
+  border-color: #333;
 }
